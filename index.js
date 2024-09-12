@@ -75,7 +75,10 @@ async function ejecutarSolicitud() {
         console.log(`Nombre generado: ${nombreCompleto}`);
         console.log(`Correo generado: ${correoAleatorio}`);
 
-        browser = await puppeteer.launch({ headless: false });
+        browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+          });
         const page = await browser.newPage();
         await page.goto('https://premiaciones.utel.edu.mx/nominado/c3d5ac9a-d97e-4a35-89e9-adcc12d97b8a');
 
